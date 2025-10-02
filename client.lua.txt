@@ -1,0 +1,14 @@
+RegisterCommand("openArchive", function()
+    SetNuiFocus(true, true)
+    SendNUIMessage({action = "openArchive"})
+end)
+
+RegisterNUICallback('searchCitizen', function(data, cb)
+    TriggerServerEvent('archive:searchCitizen', data, function(results)
+        cb(results)
+    end)
+end)
+
+RegisterNUICallback('closeArchive', function()
+    SetNuiFocus(false, false)
+end)
