@@ -1,0 +1,52 @@
+function openTab(evt, tabName) {
+const tabcontent = document.getElementsByClassName("tabcontent");
+for (let i=0;i<tabcontent.length;i++){
+tabcontent[i].style.display = "none";
+}
+const tablinks = document.getElementsByClassName("tablink");
+for (let i=0;i<tablinks.length;i++){
+tablinks[i].className = tablinks[i].className.replace(" active","");
+}
+document.getElementById(tabName).style.display = "block";
+evt.currentTarget.className += " active";
+}
+
+
+// Default open
+document.getElementsByClassName("tablink")[0].click();
+
+
+document.getElementById('searchForm').addEventListener('submit', function(e){
+e.preventDefault();
+const data = {
+firstName: document.getElementById('firstName').value,
+lastName: document.getElementById('lastName').value,
+dob: document.getElementById('dob').value,
+dossierId: document.getElementById('dossierId').value
+};
+fetch(`https://${GetParentResourceName()}/searchCitizen`, {
+method: 'POST',
+body: JSON.stringify(data)
+}).then(resp => resp.json())
+.then(results => {
+const tbody = document.querySelector('#resultsTable tbody');
+tbody.innerHTML = "";
+results.forEach(citizen => {
+tbody.innerHTML += `
+<tr>
+<td>${citizen.id}</td>
+<td>${citizen.first_name} ${citizen.last_name}</td>
+<td>${citizen.dob}</td>
+<td>${citizen.dossier_id}</td>
+</tr>
+`;
+});
+});
+});
+
+
+document.getElementById('closeBtn').addEventListener('click', () => {
+fetch(`https://${GetParentResourceName()}/closeArchive`, {
+method: 'POST'
+});
+});
