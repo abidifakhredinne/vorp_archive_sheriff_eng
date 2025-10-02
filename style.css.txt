@@ -1,0 +1,67 @@
+body {
+font-family: 'Georgia', serif;
+background: url('https://i.imgur.com/3z0S7mH.jpg') no-repeat center center fixed;
+background-size: cover;
+color: #333;
+}
+
+
+#archive {
+width: 80%;
+margin: 30px auto;
+background-color: rgba(255, 250, 240, 0.95);
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+
+.header {
+display: flex;
+align-items: center;
+margin-bottom: 20px;
+}
+.badge {
+width: 60px;
+height: 60px;
+margin-right: 15px;
+}
+
+
+.tabs {
+display: flex;
+margin-bottom: 10px;
+}
+.tablink {
+padding: 10px 20px;
+cursor: pointer;
+background-color: #d9c9a5;
+border: 1px solid #a68f6f;
+margin-right: 5px;
+border-radius: 5px 5px 0 0;
+}
+.tablink.active {
+background-color: #fff;
+border-bottom: none;
+}
+.tabcontent {
+display: none;
+padding: 10px;
+border: 1px solid #a68f6f;
+border-top: none;
+}
+#resultsTable {
+width: 100%;
+border-collapse: collapse;
+margin-top: 10px;
+}
+#resultsTable th, #resultsTable td {
+border: 1px solid #a68f6f;
+padding: 5px;
+text-align: left;
+}
+#closeBtn {
+margin-top: 15px;
+padding: 8px 15px;
+cursor: pointer;
+}
