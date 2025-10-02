@@ -1,0 +1,32 @@
+local MySQL = exports['mysql']:getMySQL()
+
+RegisterNetEvent('archive:searchCitizen', function(data, cb)
+    local firstName = data.firstName
+    local lastName = data.lastName
+    local dob = data.dob
+    local dossierId = data.dossierId
+
+    local query = "SELECT * FROM citizens WHERE 1=1"
+    local params = {}
+
+    if firstName and firstName ~= "" then
+        query = query .. " AND first_name LIKE ?"
+        table.insert(params, "%" .. firstName .. "%")
+    end
+    if lastName and lastName ~= "" then
+        query = query .. " AND last_name LIKE ?"
+        table.insert(params, "%" .. lastName .. "%")
+    end
+    if dob and dob ~= "" then
+        query = query .. " AND dob = ?"
+        table.insert(params, dob)
+    end
+    if dossierId and dossierId ~= "" then
+        query = query .. " AND dossier_id = ?"
+        table.insert(params, dossierId)
+    end
+
+    MySQL.query(query, params, function(results)
+        cb(results)
+    end)
+end)
