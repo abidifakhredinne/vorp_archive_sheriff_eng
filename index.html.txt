@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+
+<div class="tabs">
+<button class="tablink active" onclick="openTab(event, 'Property')">Property</button>
+<button class="tablink" onclick="openTab(event, 'Dossiers')">Dossiers</button>
+<button class="tablink" onclick="openTab(event, 'CitizenSearch')">Citizen Search</button>
+<button class="tablink" onclick="openTab(event, 'Identity')">Identity</button>
+</div>
+
+
+<div id="Property" class="tabcontent">
+<h2>Property</h2>
+<p>Property info will show here...</p>
+</div>
+
+
+<div id="Dossiers" class="tabcontent">
+<h2>Dossiers</h2>
+<p>Dossier info will show here...</p>
+</div>
+
+
+<div id="CitizenSearch" class="tabcontent">
+<h2>Citizen Search</h2>
+<form id="searchForm">
+<input type="text" id="firstName" placeholder="First Name">
+<input type="text" id="lastName" placeholder="Last Name">
+<input type="date" id="dob" placeholder="DOB">
+<input type="number" id="dossierId" placeholder="Dossier ID">
+<button type="submit">Search</button>
+</form>
+<table id="resultsTable">
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>DOB</th>
+<th>Dossier</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+
+
+<div id="Identity" class="tabcontent">
+<h2>Identity</h2>
+<p>Select a citizen to see identity info here.</p>
+</div>
+
+
+<button id="closeBtn">Close Archive</button>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
